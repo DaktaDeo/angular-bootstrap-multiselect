@@ -150,7 +150,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                                     local[parsedResult.itemName] = value;
                                     headers.push(parsedResult.viewMapper(local));
                                 });
-                                scope.header = headers.join(",");
+                                scope.header = headers.join(attrs.msHeaderSeperator || ", ");
                             }
 						}
 
