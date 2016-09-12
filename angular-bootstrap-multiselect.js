@@ -140,7 +140,17 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
 						if(attrs.msSelected) {
 							scope.header = $interpolate(attrs.msSelected)(scope);
 						} else {
-							scope.header = modelCtrl.$modelValue.length + " " + "selected";
+						    if(modelCtrl.$modelValue.length > 5) {
+                                scope.header = modelCtrl.$modelValue.length + " " + "selected";
+                            }else{
+                                var headers = [];
+                                angular.forEach(modelCtrl.$modelValue,function(value,key){
+                                    var local = {};
+                                    local[parsedResult.itemName] = value;
+                                    headers.push(parsedResult.viewMapper(local));
+                                });
+                                scope.header = headers.join(",");
+                            }
 						}
 
 					} else {
