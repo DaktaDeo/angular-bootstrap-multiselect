@@ -74,11 +74,23 @@ angular.module('ui.multiselect', ['multiselect.tpl.html']).factory('optionParser
                 scope.header = modelCtrl.$modelValue.length + ' ' + 'selected'
               else
                 headers = []
-                angular.forEach modelCtrl.$modelValue, (value, key) ->
-                  local = {}
-                  local[parsedResult.itemName] = value
-                  headers.push parsedResult.viewMapper(local)
-                  return
+                console.log "getHeaderText func"
+                console.log scope.items
+                
+                for item in scope.items
+                  if item.checked
+                    local = {}
+#                    console.log parsedResult.itemName
+                    local[parsedResult.itemName] = item.model
+                    headers.push parsedResult.viewMapper(local)
+#
+#                console.log modelCtrl.$modelValue
+#                angular.forEach modelCtrl.$modelValue, (value, key) ->
+#                  local = {}
+#                  local[parsedResult.itemName] = value
+#                  console.log value
+#                  headers.push parsedResult.viewMapper(local)
+#                  return
                 scope.header = headers.join(attrs.msHeaderSeperator or ', ')
           else
             local = {}

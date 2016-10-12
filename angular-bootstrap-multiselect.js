@@ -62,7 +62,7 @@
             }
           };
           getHeaderText = function() {
-            var headers, local;
+            var headers, item, j, len, local, ref;
             if (isEmpty(modelCtrl.$modelValue) || modelCtrl.$modelValue.length === 0) {
               scope.header = attrs.msHeaderEmpty || 'Select';
               return scope.header;
@@ -75,12 +75,17 @@
                   scope.header = modelCtrl.$modelValue.length + ' ' + 'selected';
                 } else {
                   headers = [];
-                  angular.forEach(modelCtrl.$modelValue, function(value, key) {
-                    var local;
-                    local = {};
-                    local[parsedResult.itemName] = value;
-                    headers.push(parsedResult.viewMapper(local));
-                  });
+                  console.log("getHeaderText func");
+                  console.log(scope.items);
+                  ref = scope.items;
+                  for (j = 0, len = ref.length; j < len; j++) {
+                    item = ref[j];
+                    if (item.checked) {
+                      local = {};
+                      local[parsedResult.itemName] = item.model;
+                      headers.push(parsedResult.viewMapper(local));
+                    }
+                  }
                   scope.header = headers.join(attrs.msHeaderSeperator || ', ');
                 }
               }
