@@ -75,8 +75,6 @@
                   scope.header = modelCtrl.$modelValue.length + ' ' + 'selected';
                 } else {
                   headers = [];
-                  console.log("getHeaderText func");
-                  console.log(scope.items);
                   ref = scope.items;
                   for (j = 0, len = ref.length; j < len; j++) {
                     item = ref[j];
@@ -149,8 +147,6 @@
                 }
               });
             }
-            console.log("setting view value ->");
-            console.log(value);
             modelCtrl.$setViewValue(value);
           };
           _markChecked = function(item, compareItem) {

@@ -74,9 +74,6 @@ angular.module('ui.multiselect', ['multiselect.tpl.html']).factory('optionParser
                 scope.header = modelCtrl.$modelValue.length + ' ' + 'selected'
               else
                 headers = []
-                console.log "getHeaderText func"
-                console.log scope.items
-                
                 for item in scope.items
                   if item.checked
                     local = {}
@@ -141,9 +138,9 @@ angular.module('ui.multiselect', ['multiselect.tpl.html']).factory('optionParser
                 value = item.model
                 return false
               return
-          
-          console.log "setting view value ->"
-          console.log value
+#
+#          console.log "setting view value ->"
+#          console.log value
           modelCtrl.$setViewValue value
           return
             
